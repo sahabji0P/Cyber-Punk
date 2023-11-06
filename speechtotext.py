@@ -2,7 +2,10 @@ import speech_recognition as sr
 
 def speech_to_text(file_name):
     recognizer = sr.Recognizer()
-
+    recognizer.energy_threshold = 300  # set the energy threshold to a lower value
+    recognizer.dynamic_energy_threshold = True
+    recognizer.dynamic_energy_adjustment_damping = 0.15
+    recognizer.dynamic_energy_adjustment_ratio = 1.5
     
     with sr.Microphone() as source:
         print("Speak something...")

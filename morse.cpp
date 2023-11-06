@@ -53,7 +53,6 @@ void initializeMorseCodeMap()
     morseCodeMap.insert(make_pair('.', ".-.-.-"));
     morseCodeMap.insert(make_pair(',', "--..--"));
     morseCodeMap.insert(make_pair('?', "..--.."));
-    morseCodeMap.insert(make_pair('\'', ".----."));
     morseCodeMap.insert(make_pair('!', "-.-.--"));
     morseCodeMap.insert(make_pair('/', "-..-."));
     morseCodeMap.insert(make_pair('(', "-.--."));

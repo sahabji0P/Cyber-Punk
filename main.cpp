@@ -54,7 +54,6 @@ void initializeMorseCodeMap()
     morseCodeMap.insert(make_pair('.', ".-.-.-"));
     morseCodeMap.insert(make_pair(',', "--..--"));
     morseCodeMap.insert(make_pair('?', "..--.."));
-    morseCodeMap.insert(make_pair('\'', ".----."));
     morseCodeMap.insert(make_pair('!', "-.-.--"));
     morseCodeMap.insert(make_pair('/', "-..-."));
     morseCodeMap.insert(make_pair('(', "-.--."));
@@ -163,6 +162,7 @@ void fileDecrypt(string input, string output)
                     }
                 }
                 morseLetter = "";
+                
             }
         }
         cout << "\n";
@@ -383,8 +383,10 @@ void fileEncryptBinary(string input, string output)
                 ascii /= 2;
             }
             outFile << binary << " ";
+            cout << binary << " ";
         }
         outFile << "\n";
+        cout << "\n";
     }
 
     inFile.close();
@@ -417,6 +419,7 @@ void fileDecryptBinary(string input, string output)
                 }
                 outFile << (char)ascii;
                 currentBinary = "";
+                cout << (char)ascii << endl;
             }
         }
         outFile << "\n";
