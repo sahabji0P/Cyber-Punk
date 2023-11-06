@@ -50,6 +50,24 @@ void initializeMorseCodeMap()
     morseCodeMap.insert(make_pair('8', "---.."));
     morseCodeMap.insert(make_pair('9', "----."));
     morseCodeMap.insert(make_pair(' ', "/"));
+    morseCodeMap.insert(make_pair('.', ".-.-.-"));
+    morseCodeMap.insert(make_pair(',', "--..--"));
+    morseCodeMap.insert(make_pair('?', "..--.."));
+    morseCodeMap.insert(make_pair('\'', ".----."));
+    morseCodeMap.insert(make_pair('!', "-.-.--"));
+    morseCodeMap.insert(make_pair('/', "-..-."));
+    morseCodeMap.insert(make_pair('(', "-.--."));
+    morseCodeMap.insert(make_pair(')', "-.--.-"));
+    morseCodeMap.insert(make_pair('&', ".-..."));
+    morseCodeMap.insert(make_pair(':', "---..."));
+    morseCodeMap.insert(make_pair(';', "-.-.-."));
+    morseCodeMap.insert(make_pair('=', "-...-"));
+    morseCodeMap.insert(make_pair('+', ".-.-."));
+    morseCodeMap.insert(make_pair('-', "-....-"));
+    morseCodeMap.insert(make_pair('_', "..--.-"));
+    morseCodeMap.insert(make_pair('"', ".-..-."));
+    morseCodeMap.insert(make_pair('$', "...-..-"));
+    morseCodeMap.insert(make_pair('@', ".--.-."));    
 }
 
 void runPythonScript()
