@@ -4,7 +4,6 @@
 #include <fstream>
 #include <cstdlib>
 #include <cstdio>
-#include <cmath>
 
 using namespace std;
 
@@ -67,7 +66,7 @@ void initializeMorseCodeMap()
     morseCodeMap.insert(make_pair('_', "..--.-"));
     morseCodeMap.insert(make_pair('"', ".-..-."));
     morseCodeMap.insert(make_pair('$', "...-..-"));
-    morseCodeMap.insert(make_pair('@', ".--.-."));
+    morseCodeMap.insert(make_pair('@', ".--.-."));    
 }
 
 void runPythonScript()
@@ -162,7 +161,6 @@ void fileDecrypt(string input, string output)
                     }
                 }
                 morseLetter = "";
-                
             }
         }
         cout << "\n";
@@ -195,9 +193,7 @@ void fileEncrypt(string input, string output)
     outFile.close();
 }
 
-// Morse code encryption and decryption
-
-void morseCode()
+int main()
 {
     while (true)
     {
@@ -233,8 +229,8 @@ void morseCode()
             {
                 runPythonScript(); // Execute Python script for speech-to-text
                 string fname = "speech.txt";
-                fileEncrypt(fname, "morse_encrypted.txt");
-                cout << "The Encrypted Message had been stored in the file: morse_encrypted.txt" << endl;
+                fileEncrypt(fname, "recording_encrypted.txt");
+                cout << "The Encrypted Message had been stored in the file: recording_encrypted.txt" << endl;
                 cout << endl;
                 break;
             }
@@ -307,267 +303,8 @@ void morseCode()
         case 3:
             cout << endl;
             cout << "Exiting the Programme..." << endl;
-            exit(0);
+            return 0;
 
-        default:
-            cout << endl;
-            cout << "Invalid choice!" << endl;
-            break;
-        }
-    }
-}
-
-void encryptBinary(string message)
-{
-    string msg1;
-
-    msg1 = message;
-
-    for (char c : msg1)
-    {
-        int ascii = (int)c;
-        string binary = "";
-        while (ascii > 0)
-        {
-            binary = to_string(ascii % 2) + binary;
-            ascii /= 2;
-        }
-        cout << binary << " ";
-    }
-    cout << endl;
-}
-
-void decryptBinary(string message)
-{
-    string msg2;
-    msg2 = message;
-
-    string currentBinary = "";
-    for (char c : msg2)
-    {
-        if (c != ' ')
-        {
-            currentBinary += c;
-        }
-        else
-        {
-            int ascii = 0;
-            int power = 0;
-            for (int i = currentBinary.length() - 1; i >= 0; --i)
-            {
-                ascii += (currentBinary[i] - '0') * pow(2, power);
-                ++power;
-            }
-            cout << (char)ascii;
-            currentBinary = "";
-        }
-    }
-    cout << endl;
-}
-
-void fileEncryptBinary(string input, string output)
-{
-    ifstream inFile(input);
-    ofstream outFile(output);
-    string line;
-
-    while (getline(inFile, line))
-    {
-        for (char c : line)
-        {
-            int ascii = (int)c;
-            string binary = "";
-            while (ascii > 0)
-            {
-                binary = to_string(ascii % 2) + binary;
-                ascii /= 2;
-            }
-            outFile << binary << " ";
-            cout << binary << " ";
-        }
-        outFile << "\n";
-        cout << "\n";
-    }
-
-    inFile.close();
-    outFile.close();
-}
-
-void fileDecryptBinary(string input, string output)
-{
-    ifstream inFile(input);
-    ofstream outFile(output);
-    string line;
-
-    while (getline(inFile, line))
-    {
-        string currentBinary = "";
-        for (char c : line)
-        {
-            if (c != ' ')
-            {
-                currentBinary += c;
-            }
-            else
-            {
-                int ascii = 0;
-                int power = 0;
-                for (int i = currentBinary.length() - 1; i >= 0; --i)
-                {
-                    ascii += (currentBinary[i] - '0') * pow(2, power);
-                    ++power;
-                }
-                outFile << (char)ascii;
-                currentBinary = "";
-                cout << (char)ascii << endl;
-            }
-        }
-        outFile << "\n";
-    }
-
-    inFile.close();
-    outFile.close();
-}
-
-void binary()
-{
-    while (true)
-    {
-        int choice;
-        string message, result;
-
-        cout << "Choose an option:" << endl;
-        cout << "1. Encrypt a message" << endl;
-        cout << "2. Record and Encrypt to Binary" << endl;
-        cout << "3. Decrypt a message" << endl;
-        cout << "4. Exit the Programme!" << endl;
-        cin >> choice;
-        cout << endl;
-
-        cin.ignore(); // Ignore newline character
-
-        if (choice == 4)
-        {
-            cout << endl;
-            cout << "Exiting the Programme..." << endl;
-            exit(0);
-        }
-        else if (choice == 1)
-        {
-            int option;
-            cout << "Choose an option:" << endl;
-            cout << "1. Enter a message" << endl;
-            cout << "2. Enter a file name" << endl;
-
-            cin >> option;
-            cout << endl;
-
-            cin.ignore(); // Ignore newline character
-
-            if (option == 1)
-            {
-                cout << "Enter a message to encrypt: ";
-                getline(cin, message);
-                cout << endl;
-
-                encryptBinary(message);
-
-                cout << endl;
-            }
-            else if (option == 2)
-            {
-                string filename;
-                cout << "Enter the name of the file to encrypt: ";
-                cin >> filename;
-                cout << endl;
-
-                fileEncryptBinary(filename, "binary_encrypted.txt");
-                cout << "The Encrypted Message had been stored in the file: binary_encrypted.txt" << endl;
-                cout << endl;
-            }
-            else
-            {
-                cout << "Invalid choice!" << endl;
-                break;
-            }
-        }
-        else if (choice == 2)
-        {
-            runPythonScript(); // Execute Python script for speech-to-text
-            string fname = "speech.txt";
-            fileEncryptBinary(fname, "binary_encrypted.txt");
-            cout << "The Encrypted Message had been stored in the file: binary_encrypted.txt" << endl;
-            cout << endl;
-            break;
-        }
-        else if (choice == 3)
-        {
-            int o;
-            cout << "Choose an option:" << endl;
-            cout << "1. Enter a code!" << endl;
-            cout << "2. Enter a file name" << endl;
-
-            cin >> o;
-            cout << endl;
-
-            cin.ignore(); // Ignore newline character
-
-            switch (o)
-            {
-            case 1:
-                cout << "Enter a Binary code to decrypt (separate symbols with spaces): ";
-                cout << endl;
-                getline(cin, message);
-                cout << endl;
-
-                decryptBinary(message);
-
-                cout << endl;
-                break;
-
-            case 2:
-                string filename;
-                cout << "Enter the name of the file to decrypt: ";
-                cin >> filename;
-                cout << endl;
-
-                fileDecryptBinary(filename, filename + "_decrypted.txt");
-                cout << "The Decrypted Message had been stored in the file: " << filename << "decrypted.txt" << endl;
-                cout << endl;
-                break;
-            }
-        }
-    }
-}
-
-// Main function
-
-int main()
-{
-    while (true)
-    {
-        int choice;
-        cout << "Choose an option:" << endl;
-        cout << "1. Morse Code" << endl;
-        cout << "2. Binary" << endl;
-        cout << "3. Exit the Programme!" << endl;
-        cin >> choice;
-        cout << endl;
-
-        cin.ignore(); // Ignore newline character
-
-        switch (choice)
-        {
-        case 1:
-            morseCode();
-            break;
-        case 2:
-            binary();
-            break;
-        case 3:
-            cout << endl;
-            cout << "Exiting the Programme..." << endl;
-            exit(0);
         default:
             cout << endl;
             cout << "Invalid choice!" << endl;
