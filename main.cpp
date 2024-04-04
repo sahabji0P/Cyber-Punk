@@ -6,8 +6,6 @@
 #include <cstdio>
 #include <cmath>
 
-// Shashwat Jain
-
 using namespace std;
 
 // Morse code mapping
