@@ -195,9 +195,27 @@ void fileEncrypt(string input, string output)
     outFile.close();
 }
 
+<<<<<<< Updated upstream
 // Morse code encryption and decryption
 
 void morseCode()
+=======
+<<<<<<< Updated upstream
+int main()
+=======
+// Morse code encryption and decryption
+
+/**
+ * Executes the Morse Code program.
+ * 
+ * This function allows the user to choose between encrypting a message, decrypting a Morse code, or exiting the program.
+ * It prompts the user for input and performs the corresponding operation based on the chosen option.
+ * The function uses various helper functions to perform encryption, decryption, and file operations.
+ * The program runs in an infinite loop until the user chooses to exit.
+ */
+void morseCode()
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 {
     while (true)
     {
