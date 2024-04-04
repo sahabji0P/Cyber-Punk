@@ -2,7 +2,7 @@
 #include <string>
 #include <map>
 #include <fstream>
-#include <cstdlib>
+// #include <cstdlib>
 #include <cstdio>
 #include <cmath>
 
@@ -164,7 +164,6 @@ void fileDecrypt(string input, string output)
                     }
                 }
                 morseLetter = "";
-                
             }
         }
         cout << "\n";
