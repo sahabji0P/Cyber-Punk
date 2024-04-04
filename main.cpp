@@ -2,8 +2,8 @@
 #include <string>
 #include <map>
 #include <fstream>
-// #include <cstdlib>
-// #include <cstdio>
+#include <cstdlib>
+#include <cstdio>
 #include <cmath>
 
 // Shashwat Jain
